@@ -11,34 +11,22 @@
         <th>Tipo do Pagamento</th>
         <th>Status</th>
         <th>Parcelas</th>
+        <th>Parcela Atual</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Row 1 -->
-      <tr>
-        <td>Produto 1</td>
-        <td>Categoria 1</td>
-        <td>Usuário 1</td>
-        <td>R$ 100,00</td>
-        <td>01/01/2024</td>
-        <td>10/01/2024</td>
-        <td>Cartão de Crédito</td>
-        <td>Pago</td>
-        <td>1</td>
+      <tr *ngFor="let record of list">
+        <td>{{ record.product }}</td>
+        <td>{{ record.category }}</td>
+        <td>{{ record.user }}</td>
+        <td>{{ record.valor }}</td>
+        <td>{{ record.purchaseDate }}</td>
+        <td>{{ record.payDay }}</td>
+        <td>{{ record.payMethod }}</td>
+        <td>{{ record.status }}</td>
+        <td>{{ record.installments }}</td>
+        <td>{{ record.actualInstallments }}</td>
       </tr>
-      <!-- Row 2 -->
-      <tr>
-        <td>Produto 2</td>
-        <td>Categoria 2</td>
-        <td>Usuário 2</td>
-        <td>R$ 200,00</td>
-        <td>02/01/2024</td>
-        <td>12/01/2024</td>
-        <td>Boleto</td>
-        <td>Pendente</td>
-        <td>2</td>
-      </tr>
-      <!-- Adicione mais linhas conforme necessário -->
     </tbody>
   </table>
 </div>
