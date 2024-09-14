@@ -1,0 +1,42 @@
+{"expenses": [
+    {
+      "id": 1,
+      "product": "Laptop",
+      "category": "Electronics",
+      "user": "Alice",
+      "valor": "1200.00",
+      "purchaseDate": "2024-01-15",
+      "payDay": "2024-02-15",
+      "payMethod": "Credit Card",
+      "status": "Paid",
+      "installments": "12",
+      "actualInstallments": "5"
+    },
+    {
+      "id": 2,
+      "product": "Groceries",
+      "category": "Food",
+      "user": "Bob",
+      "valor": "250.00",
+      "purchaseDate": "2024-03-10",
+      "payDay": "2024-03-10",
+      "payMethod": "Debit Card",
+      "status": "Paid",
+      "installments": "1",
+      "actualInstallments": "1"
+    },
+    {
+      "id": 3,
+      "product": "Gym Membership",
+      "category": "Health & Fitness",
+      "user": "Charlie",
+      "valor": "80.00",
+      "purchaseDate": "2024-06-01",
+      "payDay": "2024-06-01",
+      "payMethod": "Bank Transfer",
+      "status": "Unpaid",
+      "installments": "1",
+      "actualInstallments": "0"
+    }
+  ]
+}

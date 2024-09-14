@@ -1,0 +1,56 @@
+Requisitos Funcionais Detalhados [RF]
+
+[RF001] Cadastro de Gastos
+
+O sistema deve permitir o cadastro de novos gastos domésticos
+Cada gasto deve conter as seguintes informações:
+
+Produto (nome do produto adquirido)
+Categoria (categoria do produto, como alimentação, transporte, lazer, etc.)
+Usuário (usuário responsável pela compra)
+Valor (valor do produto)
+Data da Compra
+Data do Pagamento
+Tipo de Pagamento (dinheiro, cartão de crédito, cheque, etc.)
+Status (pago, a pagar, parcelado, etc.)
+Número de Parcelas (caso o pagamento seja parcelado)
+
+[RF002] Atribuição de Gastos a Usuários
+
+O sistema deve permitir que cada gasto seja atribuído a um usuário específico
+Deve ser possível selecionar o usuário responsável no momento do cadastro de um novo gasto
+
+[RF003] Pesquisa de Gastos
+
+O sistema deve permitir a pesquisa de gastos por:
+
+Valor (intervalo de valores)
+Produto (nome do produto)
+Data da Compra (intervalo de datas)
+Data do Pagamento (intervalo de datas) 
+
+[RF004] Filtro por Usuário
+
+O sistema deve permitir que os gastos sejam filtrados por usuário
+O usuário deve poder selecionar um ou mais usuários para visualizar seus respectivos gastos
+
+[RF005] Painel de Informações
+
+O sistema deve apresentar no cabeçalho um painel com as seguintes informações:
+
+Soma total de todos os lançamentos da data atual
+Saldo disponível (total de entradas - total de saídas)
+
+
+
+[RF006] Formulário de Cadastro de Gastos
+
+O sistema deve possuir um formulário para o cadastro de novos gastos
+O formulário deve conter campos para todas as informações necessárias (descritas em [RF001])
+Deve ser possível salvar o novo gasto no sistema após o preenchimento do formulário
+Requisitos Não Funcionais
+[RNF001] O sistema deve ser acessível através de navegadores web compatíveis com as versões mais recentes de Chrome, Firefox e Edge.
+
+[RNF002] O tempo de resposta para realizar buscas e filtragens deve ser inferior a 2 segundos para até 1.000 registros.
+
+[RNF003] O sistema deve permitir a entrada de dados e exibição de informações sem erros de formatação ou dados ausentes.
