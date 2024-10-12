@@ -1,14 +1,12 @@
-export class ExpenseRecord{
-
-product: String = ""
-category: String = ""
-user: String = ""
-valor: String = ""
-purchaseDate: String = ""
-payDay: String = ""
-payMethod: String = ""
-status: string = ""
-installments: string = ""
-actualInstallments: string = ""
-
-} 
+export class ExpenseRecord {
+    product: string = '';
+    category: string = '';
+    user: string = '';
+    valor: string = '';
+    purchaseDate: string = '';
+    payDay: string = '';
+    payMethod: string = '';
+    status: string = '';
+    installments: string = '';
+    actualInstallments: string = '';
+  }
