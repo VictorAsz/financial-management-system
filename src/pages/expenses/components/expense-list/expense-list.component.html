@@ -1,32 +1,142 @@
-<div class="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Produto</th>
-        <th>Categoria</th>
-        <th>Usuário</th>
-        <th>Valor</th>
-        <th>Data da Compra</th>
-        <th>Data do Pagamento</th>
-        <th>Tipo do Pagamento</th>
-        <th>Status</th>
-        <th>Parcelas</th>
-        <th>Parcela Atual</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let record of list">
-        <td>{{ record.product }}</td>
-        <td>{{ record.category }}</td>
-        <td>{{ record.user }}</td>
-        <td>{{ record.valor }}</td>
-        <td>{{ record.purchaseDate }}</td>
-        <td>{{ record.payDay }}</td>
-        <td>{{ record.payMethod }}</td>
-        <td>{{ record.status }}</td>
-        <td>{{ record.installments }}</td>
-        <td>{{ record.actualInstallments }}</td>
-      </tr>
-    </tbody>
-  </table>
+
+
+<div class="p-3">
+  <div class="search-container mb-4 flex">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Pesquisar por produto, categoria ou usuário"
+      class="border rounded p-2 flex-grow"
+    />
+    <button (click)="search()" class="bg-blue-500 text-white rounded p-2 ml-2">Pesquisar</button>
+    <button (click)="clear()" class="bg-gray-500 text-white rounded p-2 ml-2">Limpar</button>
+  </div>
+  
+  <!-- Acordeão de Filtros -->
+  <div class="mb-4">
+    <div
+      class="flex justify-between items-center bg-gray-100 p-4 rounded-md cursor-pointer transition-all duration-300"
+      (click)="isOpen = !isOpen"
+    >
+      <h2 class="text-lg font-semibold">Filtros avançados</h2>
+    
+    </div>
+    
+    <div [ngClass]="{'hidden': !isOpen, 'block': isOpen}" class="bg-gray-100 p-4 rounded-md mt-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Produto Select -->
+        <div>
+          <label for="product" class="block mb-1">Produto</label>
+          <select id="product" class="border rounded p-2 w-full">
+            <option value="">Selecione um produto</option>
+            <!-- Adicione as opções do produto aqui -->
+          </select>
+        </div>
+  
+        <!-- Categoria Select -->
+        <div>
+          <label for="category" class="block mb-1">Categoria</label>
+          <select id="category" class="border rounded p-2 w-full">
+            <option value="">Selecione uma categoria</option>
+            <!-- Adicione as opções da categoria aqui -->
+          </select>
+        </div>
+  
+        <!-- Usuario Select -->
+        <div>
+          <label for="user" class="block mb-1">Usuário</label>
+          <select id="user" class="border rounded p-2 w-full">
+            <option value="">Selecione um usuário</option>
+            <!-- Adicione as opções do usuário aqui -->
+          </select>
+        </div>
+  
+        <!-- Valor Mínimo -->
+        <div>
+          <label for="minValue" class="block mb-1">Valor Mínimo</label>
+          <input type="number" id="minValue" class="border rounded p-2 w-full" placeholder="Valor mínimo" />
+        </div>
+  
+        <!-- Valor Máximo -->
+        <div>
+          <label for="maxValue" class="block mb-1">Valor Máximo</label>
+          <input type="number" id="maxValue" class="border rounded p-2 w-full" placeholder="Valor máximo" />
+        </div>
+  
+        <!-- Intervalo de Data -->
+        <div>
+          <label for="startDate" class="block mb-1">Data Inicial</label>
+          <input type="date" id="startDate" class="border rounded p-2 w-full" />
+        </div>
+  
+        <div>
+          <label for="endDate" class="block mb-1">Data Final</label>
+          <input type="date" id="endDate" class="border rounded p-2 w-full" />
+        </div>
+  
+        <!-- Intervalo de Data de Pagamento -->
+        <div>
+          <label for="paymentStartDate" class="block mb-1">Data de Pagamento Inicial</label>
+          <input type="date" id="paymentStartDate" class="border rounded p-2 w-full" />
+        </div>
+  
+        <div>
+          <label for="paymentEndDate" class="block mb-1">Data de Pagamento Final</label>
+          <input type="date" id="paymentEndDate" class="border rounded p-2 w-full" />
+        </div>
+  
+        <!-- Tipo de Pagamento Select -->
+        <div>
+          <label for="paymentType" class="block mb-1">Tipo de Pagamento</label>
+          <select id="paymentType" class="border rounded p-2 w-full">
+            <option value="">Selecione um tipo de pagamento</option>
+            <!-- Adicione as opções do tipo de pagamento aqui -->
+          </select>
+        </div>
+  
+        <!-- Status Select -->
+        <div>
+          <label for="status" class="block mb-1">Status</label>
+          <select id="status" class="border rounded p-2 w-full">
+            <option value="">Selecione um status</option>
+            <!-- Adicione as opções do status aqui -->
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+          <th>Usuário</th>
+          <th>Valor</th>
+          <th>Data da Compra</th>
+          <th>Data do Pagamento</th>
+          <th>Tipo do Pagamento</th>
+          <th>Status</th>
+          <th>Parcelas</th>
+          <th>Parcela Atual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of filteredList">
+          <td>{{ record.product }}</td>
+          <td>{{ record.category }}</td>
+          <td>{{ record.user }}</td>
+          <td>{{ record.valor }}</td>
+          <td>{{ record.purchaseDate }}</td>
+          <td>{{ record.payDay }}</td>
+          <td>{{ record.payMethod }}</td>
+          <td>{{ record.status }}</td>
+          <td>{{ record.installments }}</td>
+          <td>{{ record.actualInstallments }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
