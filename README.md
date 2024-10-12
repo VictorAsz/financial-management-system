@@ -71,8 +71,8 @@ Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICEN
 
 Se você tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato:
 
-- **Victor Assunção Schumann Oliveira**: (mailto:victor.a.schumann@gmail.com)
-- **LinkedIn**: (https://www.linkedin.com/in/victoraszs/)
+- **Victor Assunção Schumann Oliveira**: victor.a.schumann@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/victoraszs/
 
 ---
 
