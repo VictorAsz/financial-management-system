@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ExpensesService } from '../../services/expenses.service';
 import { ExpenseRecord } from '../../models/expense-record';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   standalone: true,
   selector: 'expense-list',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './expense-list.component.html',
   styleUrls: ['./expense-list.component.css']
 })

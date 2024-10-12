@@ -7,8 +7,9 @@ import { ExpenseListComponent } from '../pages/expenses/components/expense-list/
 
 
 export const routes: Routes = [
-{ path: 'home', component: MainPageComponent },
-{ path: 'expenses-list', component: ExpenseListComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: MainPageComponent },
+  { path: 'expenses-list', component: ExpenseListComponent},
 ];
 
 bootstrapApplication(AppComponent, {

@@ -1,10 +1,7 @@
 <div class="flex min-h-screen">
-<app-menu-side-bar></app-menu-side-bar>
-
-
-<main>
-<router-outlet></router-outlet>
-</main>
-
-
-</div>
+    <app-menu-side-bar></app-menu-side-bar> <!-- Sidebar -->
+  
+    <main class="flex-grow p-4"> <!-- Main content area -->
+      <router-outlet></router-outlet> <!-- Router outlet for route rendering -->
+    </main>
+  </div>
