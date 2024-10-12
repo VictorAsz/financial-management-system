@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SideBarMenuComponent } from '../template/menu-side-bar/side-bar-menu.component';
 import { ExpenseListComponent } from '../pages/expenses/components/expense-list/expense-list.component';
 import { FooterComponent } from '../template/footer/footer.component';
+import { HeaderComponent } from '../template/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { FooterComponent } from '../template/footer/footer.component';
     ,RouterLinkActive
     ,SideBarMenuComponent
     ,FooterComponent
+    ,HeaderComponent
     ,ExpenseListComponent
   ],
   templateUrl: './app.component.html',
