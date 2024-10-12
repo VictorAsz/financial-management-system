@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ExpensesService } from '../../services/expenses.service';
 import { ExpenseRecord } from '../../models/expense-record';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   standalone: true,
   selector: 'expense-list',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule ],
   templateUrl: './expense-list.component.html',
   styleUrls: ['./expense-list.component.css']
 })
@@ -35,18 +36,21 @@ export class ExpenseListComponent implements OnInit {
 
 
   constructor(
-    private _expensesService: ExpensesService
+    private _expensesService: ExpensesService,
+    private _router: Router
   ) {}
 
   ngOnInit() {
     this.getExpenses();
+  
   }
 
   public getExpenses() {
     this._expensesService.getExpenses().subscribe({
       next: response => {
-        this.list = response.records;
-        this.filteredList = response.records; // Inicializa a lista filtrada
+        this.list = response;
+        this.filteredList = response; // Inicializa a lista filtrada
+        console.log(this.list)
       },
       error: () => {
         console.log("erro GetExpense");
@@ -69,5 +73,9 @@ export class ExpenseListComponent implements OnInit {
   public clear() {
     this.searchTerm = ''; // Limpa o termo de pesquisa
     this.filteredList = this.list; // Restaura a lista filtrada
+  }
+
+  public onAdd(){
+    this._router.navigate(['/expenses-add-form']);
   }
 }

@@ -1,6 +1,12 @@
-
-
 <div class="p-3">
+  <!-- Cabeçalho com Título e Botão "Adicionar" -->
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-semibold">Lançamentos</h1>
+    <button (click)="onAdd()" class="bg-green-500 text-white rounded p-2">Adicionar</button>
+  </div>
+
+  <hr class="mb-4"> 
+
   <div class="search-container mb-4 flex">
     <input
       type="text"
@@ -19,7 +25,6 @@
       (click)="isOpen = !isOpen"
     >
       <h2 class="text-lg font-semibold">Filtros avançados</h2>
-    
     </div>
     
     <div [ngClass]="{'hidden': !isOpen, 'block': isOpen}" class="bg-gray-100 p-4 rounded-md mt-2">
@@ -106,7 +111,6 @@
     </div>
   </div>
   
-
   <div class="table-container">
     <table>
       <thead>
