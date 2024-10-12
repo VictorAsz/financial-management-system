@@ -1,4 +1,5 @@
 export class ExpenseRecord {
+    id: string = '';
     product: string = '';
     category: string = '';
     user: string = '';
@@ -9,4 +10,5 @@ export class ExpenseRecord {
     status: string = '';
     installments: string = '';
     actualInstallments: string = '';
+    isActive: boolean = true;
   }

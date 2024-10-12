@@ -1,4 +1,5 @@
-{"expenses": [
+{
+  "expenses": [
     {
       "id": 1,
       "product": "Laptop",
@@ -10,7 +11,8 @@
       "payMethod": "Credit Card",
       "status": "Paid",
       "installments": "12",
-      "actualInstallments": "5"
+      "actualInstallments": "5",
+      "isActive": true
     },
     {
       "id": 2,
@@ -23,7 +25,8 @@
       "payMethod": "Debit Card",
       "status": "Paid",
       "installments": "1",
-      "actualInstallments": "1"
+      "actualInstallments": "1",
+      "isActive": true
     },
     {
       "id": 3,
@@ -37,6 +40,20 @@
       "status": "Unpaid",
       "installments": "1",
       "actualInstallments": "0"
+    },
+    {
+      "id": "",
+      "product": "Produto de teste Create",
+      "category": "categoria1",
+      "user": "usuario2",
+      "valor": 33,
+      "purchaseDate": "2024-10-15",
+      "payDay": "2024-10-22",
+      "payMethod": "metodo1",
+      "status": "status2",
+      "installments": 23,
+      "actualInstallments": 23,
+      "isActive": true
     }
   ]
 }

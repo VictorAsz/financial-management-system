@@ -1,10 +1,87 @@
 <div class="p-3">
-  <!-- Cabeçalho com Título e Botão "Adicionar" -->
+  <!-- Cabeçalho com Título e Botões -->
   <div class="flex justify-between items-center mb-4">
     <h1 class="text-2xl font-semibold">Novo Lançamento</h1>
-    <button (click)="Finish()" class="bg-gray-700 text-white rounded p-2">Adicionar</button>
+    
+    <!-- Contêiner Flexível para os Botões -->
+    <div class="flex space-x-2">
+      <button (click)="Return()" class="bg-gray-400 text-white rounded p-2">Cancelar</button>
+      <button (click)="Finish()" class="bg-green-500 text-white rounded p-2">Adicionar</button>
+    </div>
   </div>
 
-  <hr class="mb-4"> 
+  <hr class="mb-4">
+  <form [formGroup]="form" class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-  </div>
+    <div>
+      <label for="product" class="block mb-1">Produto:</label>
+      <input id="product" formControlName="product" class="w-full p-2 border rounded" type="text" />
+    </div>
+
+    <div>
+      <label for="category" class="block mb-1">Categoria:</label>
+      <select id="category" formControlName="category" class="w-full p-2 border rounded">
+        <option value="">Selecione uma categoria</option>
+        <option value="categoria1">Categoria 1</option>
+        <option value="categoria2">Categoria 2</option>
+        <option value="categoria3">Categoria 3</option>
+      </select>
+    </div>
+    <div>
+      <label for="user" class="block mb-1">Usuário:</label>
+      <select id="user" formControlName="user" class="w-full p-2 border rounded">
+        <option value="">Selecione um usuário</option>
+        <option value="usuario1">Usuário 1</option>
+        <option value="usuario2">Usuário 2</option>
+        <option value="usuario3">Usuário 3</option>
+      </select>
+    </div>
+    <div>
+      <label for="valor" class="block mb-1">Valor:</label>
+      <input id="valor" formControlName="valor" class="w-full p-2 border rounded" type="number" />
+    </div>
+    <div>
+      <label for="purchaseDate" class="block mb-1">Data da Compra:</label>
+      <input id="purchaseDate" type="date" formControlName="purchaseDate" class="w-full p-2 border rounded" />
+    </div>
+    <div>
+      <label for="payDay" class="block mb-1">Data de Pagamento:</label>
+      <input id="payDay" type="date" formControlName="payDay" class="w-full p-2 border rounded" />
+    </div>
+    <div>
+      <label for="payMethod" class="block mb-1">Método de Pagamento:</label>
+      <select id="payMethod" formControlName="payMethod" class="w-full p-2 border rounded">
+        <option value="">Selecione um método de pagamento</option>
+        <option value="metodo1">Método 1</option>
+        <option value="metodo2">Método 2</option>
+        <option value="metodo3">Método 3</option>
+      </select>
+    </div>
+    <div>
+      <label for="status" class="block mb-1">Status:</label>
+      <select id="status" formControlName="status" class="w-full p-2 border rounded">
+        <option value="">Selecione um status</option>
+        <option value="status1">Ativo</option>
+        <option value="status2">Inativo</option>
+        <option value="status3">Pendente</option>
+      </select>
+    </div>
+    <div>
+      <label for="installments" class="block mb-1">Parcelas:</label>
+      <input id="installments" formControlName="installments" class="w-full p-2 border rounded" type="number" />
+    </div>
+    <div>
+      <label for="actualInstallments" class="block mb-1">Parcelas Atuais:</label>
+      <input id="actualInstallments" formControlName="actualInstallments" class="w-full p-2 border rounded" type="number" />
+    </div>
+    <div class="pt-8">
+      <label for="isActive" class="flex items-center">
+        <input type="checkbox" id="isActive" formControlName="isActive"  class="mr-2 w-6 h-6">
+        Ativo
+      </label>
+    </div>
+ 
+    
+  </form>
+
+</div>

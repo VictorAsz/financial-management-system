@@ -66,13 +66,13 @@ export class ExpenseListComponent implements OnInit {
         record.user.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     } else {
-      this.filteredList = this.list; // Se não houver termo de pesquisa, exibe todos os registros
+      this.filteredList = this.list; 
     }
   }
 
   public clear() {
-    this.searchTerm = ''; // Limpa o termo de pesquisa
-    this.filteredList = this.list; // Restaura a lista filtrada
+    this.searchTerm = ''; 
+    this.filteredList = this.list; 
   }
 
   public onAdd(){

@@ -33,5 +33,18 @@ public getExpenses(): Observable<ExpenseRecord[]>{
 )
 
 }
+public createExpenses(record: ExpenseRecord): Observable<ExpenseRecord>{
+  
+  const headers: HttpHeaders = this.HTTP_HEADERS
+  const params: HttpParams = new HttpParams()
+
+  const url = `${this.LOCAL_URL}/expenses`
+
+  return this._httpClient.post<ExpenseRecord>(url, record, {'headers': headers})
+  .pipe(take(1),
+  tap( response => {console.log('Response:', response)}, )
+)
+
+}
 
 }
