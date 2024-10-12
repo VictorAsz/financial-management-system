@@ -125,7 +125,7 @@
           <th>Status</th>
           <th>Parcelas</th>
           <th>Parcela Atual</th>
-          <th>Ações</th>
+          <th class="text-center">Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -140,12 +140,21 @@
           <td>{{ record.status }}</td>
           <td>{{ record.installments }}</td>
           <td>{{ record.actualInstallments }}</td>
-          <td class="text-center">
+          <td>
             <i 
-              class="fa-solid fa-pen-to-square cursor-pointer text-blue-500 hover:text-blue-700" 
+              class="fa-solid fa-pen-to-square icon-large cursor-pointer text-blue-500 hover:text-blue-700 mr-2" 
               (click)="navigateToEdit(record.id)">
             </i>
+            <i class="fa-solid fa-trash icon-large cursor-pointer text-red-500 hover:text-red-700"
+              (click)="openDeleteModal(record.id)">
+            </i>
           </td>
+          
+          <app-confirm-delete-modal 
+          [isOpen]="isModalOpen" 
+          (onClose)="isModalOpen = false" 
+          (onConfirm)="confirmDelete()">
+        </app-confirm-delete-modal>
 
         </tr>
       </tbody>

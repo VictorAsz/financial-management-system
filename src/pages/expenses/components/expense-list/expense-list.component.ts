@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 @Component({
   standalone: true,
   selector: 'expense-list',
-  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule ],
+  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule, DeleteModalComponent],
   templateUrl: './expense-list.component.html',
   styleUrls: ['./expense-list.component.css']
 })
@@ -33,7 +34,11 @@ export class ExpenseListComponent implements OnInit {
   public selectedPaymentType: string = '';
   public selectedStatus: string = '';
 
+ 
+  // modal Variables
 
+  selectedExpenseId: string | null = null;
+  isModalOpen = false; 
 
   constructor(
     private _expensesService: ExpensesService,
@@ -76,6 +81,25 @@ export class ExpenseListComponent implements OnInit {
   }
 
   public navigateToEdit(id: string): void {
-    this._router.navigate(['/expenses-add-form', id]); // Ajuste a rota conforme necessário
+    this._router.navigate(['/expenses-add-form', id]); 
+  }
+
+    public openDeleteModal(id: string): void {
+      this.selectedExpenseId = id;
+      this.isModalOpen = true; 
+    }
+
+  public confirmDelete(): void {
+    if (this.selectedExpenseId) {
+      this._expensesService.deleteExpense(this.selectedExpenseId).subscribe({
+        next: response => {
+          this.getExpenses(); 
+          console.log("Despesa excluída com sucesso");
+        },
+        error: () => {
+          console.error("Erro ao excluir despesa");
+        }
+      });
+    }
   }
 }

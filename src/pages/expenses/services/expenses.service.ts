@@ -59,6 +59,19 @@ public updateExpense(record: ExpenseRecord): Observable<ExpenseRecord>{
 )
 
 }
+public deleteExpense(id: string): Observable<Error>{
+  
+  const headers: HttpHeaders = this.HTTP_HEADERS
+  const params: HttpParams = new HttpParams()
+
+  const url = `${this.LOCAL_URL}/expenses/${id}`
+
+  return this._httpClient.delete<Error>(url, {'headers': headers})
+  .pipe(take(1),
+  tap( response => {console.log('Response:', response)}, )
+)
+
+}
 public getExpense(id: string): Observable<ExpenseRecord>{
   
   const headers: HttpHeaders = this.HTTP_HEADERS

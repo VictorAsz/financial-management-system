@@ -42,31 +42,17 @@
       "actualInstallments": "0"
     },
     {
-      "id": "4",
-      "product": "Produto de teste Create",
-      "category": "categoria1",
+      "id": "4336",
+      "product": "teste",
+      "category": "categoria2",
       "user": "usuario2",
-      "valor": 33,
-      "purchaseDate": "2024-10-15",
-      "payDay": "2024-10-22",
-      "payMethod": "metodo1",
-      "status": "status2",
-      "installments": 23,
-      "actualInstallments": 23,
-      "isActive": true
-    },
-    {
-      "id": "507d",
-      "product": "testeGET",
-      "category": "categoria1",
-      "user": "usuario2",
-      "valor": 34,
-      "purchaseDate": "2024-10-17",
-      "payDay": "2024-10-02",
-      "payMethod": "metodo1",
-      "status": "status2",
-      "installments": 34,
-      "actualInstallments": 34234,
+      "valor": 43,
+      "purchaseDate": "2024-10-09",
+      "payDay": "2024-10-30",
+      "payMethod": "metodo2",
+      "status": "status3",
+      "installments": 2342,
+      "actualInstallments": 4324,
       "isActive": true
     }
   ]
