@@ -1,21 +1,41 @@
 <!-- Side Navigation Bar -->
-<aside class="w-64 bg-gray-800 text-white flex flex-col h-screen">
+<aside class="w-64 bg-gray-800 text-white flex flex-col h-screen transition-width duration-300" [ngClass]="{'w-16': isCollapsed, 'w-64': !isCollapsed}">
+  <!-- Botão de Colapso -->
+  <button (click)="toggleCollapse()" class="p-2 bg-gray-800 hover:bg-gray-700 rounded">
+    <i class="fas" [ngClass]="isCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
+  </button>
+
   <nav class="flex-grow">
     <ul class="space-y-2 p-4">
       <li>
-        <a  routerLink="/home" class="block p-2 rounded-md hover:bg-gray-700">Home</a>
+        <a routerLink="/home" class="flex items-center p-2 rounded-md hover:bg-gray-700">
+          <i class="fas fa-home"></i>
+          <span class="ml-2" [ngClass]="{'hidden': isCollapsed}">Home</span>
+        </a>
       </li>
       <li>
-        <a routerLink="/expenses-list" class="block p-2 rounded-md hover:bg-gray-700">Dashboard</a>
+        <a routerLink="/expenses-list" class="flex items-center p-2 rounded-md hover:bg-gray-700">
+          <i class="fas fa-th"></i>
+          <span class="ml-2" [ngClass]="{'hidden': isCollapsed}">Dashboard</span>
+        </a>
       </li>
       <li>
-        <a routerLink="/expenses-list" class="block p-2 rounded-md hover:bg-gray-700">Profile</a>
+        <a routerLink="/profile" class="flex items-center p-2 rounded-md hover:bg-gray-700">
+          <i class="fas fa-user"></i>
+          <span class="ml-2" [ngClass]="{'hidden': isCollapsed}">Profile</span>
+        </a>
       </li>
       <li>
-        <a routerLink="/expenses-list" class="block p-2 rounded-md hover:bg-gray-700">Settings</a>
+        <a routerLink="/settings" class="flex items-center p-2 rounded-md hover:bg-gray-700">
+          <i class="fas fa-cog"></i>
+          <span class="ml-2" [ngClass]="{'hidden': isCollapsed}">Settings</span>
+        </a>
       </li>
       <li>
-        <a routerLink="/expenses-list" class="block p-2 rounded-md hover:bg-gray-700">Logout</a>
+        <a routerLink="/logout" class="flex items-center p-2 rounded-md hover:bg-gray-700">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="ml-2" [ngClass]="{'hidden': isCollapsed}">Logout</span>
+        </a>
       </li>
     </ul>
   </nav>
