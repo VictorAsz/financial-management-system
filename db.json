@@ -1,8 +1,7 @@
 {
   "expenses": [
     {
-      "id": 1,
-      "product": "Laptop",
+      "product": "Laptop update",
       "category": "Electronics",
       "user": "Alice",
       "valor": "1200.00",
@@ -12,10 +11,11 @@
       "status": "Paid",
       "installments": "12",
       "actualInstallments": "5",
-      "isActive": true
+      "isActive": true,
+      "id": "1"
     },
     {
-      "id": 2,
+      "id": "2",
       "product": "Groceries",
       "category": "Food",
       "user": "Bob",
@@ -29,7 +29,7 @@
       "isActive": true
     },
     {
-      "id": 3,
+      "id": "3",
       "product": "Gym Membership",
       "category": "Health & Fitness",
       "user": "Charlie",
@@ -42,7 +42,7 @@
       "actualInstallments": "0"
     },
     {
-      "id": "",
+      "id": "4",
       "product": "Produto de teste Create",
       "category": "categoria1",
       "user": "usuario2",
@@ -53,6 +53,20 @@
       "status": "status2",
       "installments": 23,
       "actualInstallments": 23,
+      "isActive": true
+    },
+    {
+      "id": "507d",
+      "product": "testeGET",
+      "category": "categoria1",
+      "user": "usuario2",
+      "valor": 34,
+      "purchaseDate": "2024-10-17",
+      "payDay": "2024-10-02",
+      "payMethod": "metodo1",
+      "status": "status2",
+      "installments": 34,
+      "actualInstallments": 34234,
       "isActive": true
     }
   ]
