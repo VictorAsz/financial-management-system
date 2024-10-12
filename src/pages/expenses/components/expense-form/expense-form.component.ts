@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Router} from '@angular/router';
 import { ExpenseRecord } from '../../models/expense-record';
 import { CommonModule } from '@angular/common';
 import { ExpensesService } from '../../services/expenses.service';
@@ -15,14 +16,15 @@ import { ExpensesService } from '../../services/expenses.service';
 export class ExpenseFormComponent implements OnInit {
 
   public form: FormGroup;
+  private id: string = "0";
 
   constructor(
     private _router: Router,
+    private _route: ActivatedRoute,
     private fb: FormBuilder,
     private _expensesService: ExpensesService
   ) {
     this.form = this.fb.group({
-      id: [''],
       product: ['', Validators.required],
       category: ['', Validators.required],
       user: ['', Validators.required],
@@ -39,16 +41,42 @@ export class ExpenseFormComponent implements OnInit {
    }
 
   ngOnInit() {
+
+    if(this._route.snapshot.paramMap.get('id') === "0"){
+      this.id = "0"
+    }else{
+      this.id = this._route.snapshot.paramMap.get("id") || "0";    
+      this.GetExpense()
+    }
+    
   }
 
 
-  public Finish(): void {
+  public GetExpense(): void{
+
+    this._expensesService.getExpense(this.id).subscribe({
+      next: response => {        
+        this.form.patchValue(response);
+      },
+
+      error: (err) => {
+        console.log("Erro ao buscar lançamento:" + (err.error.message || 'Erro desconhecido'));      
+      }
+      
+    });
+  
+    console.log(this.form)
+}
+
+
+  public Create(): void {
+
     if (this.form.valid) {
-      const expenseRecord: ExpenseRecord = this.form.value;
+      const record: ExpenseRecord = this.form.value;
    
-      this._expensesService.createExpenses(expenseRecord).subscribe({
+      this._expensesService.createExpenses(record).subscribe({
         next: response => {        
-          console.log("Expense Criada")
+          console.log("Despesa Criada")
           this._router.navigate(['/expenses-list']);
         },
         error: (err) => {
@@ -59,6 +87,33 @@ export class ExpenseFormComponent implements OnInit {
     } else {
       console.log('O formulário é inválido');
     }
+  }
+
+  public Update(): void {
+
+    if (this.form.valid) {
+      const record: ExpenseRecord = this.form.value;
+      record.id = this.id
+      this._expensesService.updateExpense(record).subscribe({
+        next: response => {        
+          console.log("Despesa atualizada")
+          this._router.navigate(['/expenses-list']);
+        },
+        error: (err) => {
+          console.log("Erro ao atualizar despesa:" + (err.error.message || 'Erro desconhecido'));
+         
+        }
+      });
+    } else {
+      console.log('O formulário é inválido');
+    }
+  }
+  public Finish(): void {
+   if(this.id === '0'){
+      this.Create()
+   }else{
+      this.Update()
+   }
 
   }
 

@@ -75,7 +75,7 @@ export class ExpenseListComponent implements OnInit {
     this.filteredList = this.list; 
   }
 
-  public onAdd(){
-    this._router.navigate(['/expenses-add-form']);
+  public navigateToEdit(id: string): void {
+    this._router.navigate(['/expenses-add-form', id]); // Ajuste a rota conforme necessário
   }
 }

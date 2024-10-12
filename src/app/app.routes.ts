@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: MainPageComponent },
   { path: 'expenses-list', component: ExpenseListComponent},
-  { path: 'expenses-add-form', component: ExpenseFormComponent},
+  { path: 'expenses-add-form/:id', component: ExpenseFormComponent},
 ];
 
 bootstrapApplication(AppComponent, {
