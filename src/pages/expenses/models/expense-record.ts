@@ -3,12 +3,12 @@ export class ExpenseRecord {
     product: string = '';
     category: string = '';
     user: string = '';
-    valor: string = '';
+    value: number = 0;
     purchaseDate: string = '';
     payDay: string = '';
     payMethod: string = '';
     status: string = '';
-    installments: string = '';
-    actualInstallments: string = '';
+    installments: number = 0;
+    actualInstallments: number = 0;
     isActive: boolean = true;
   }

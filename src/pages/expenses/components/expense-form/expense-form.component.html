@@ -14,12 +14,12 @@
   <form [formGroup]="form" class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
     <div>
-      <label for="product" class="block mb-1">Produto:</label>
+      <label for="product" class="block mb-1">Produto: <span>*</span></label>
       <input id="product" formControlName="product" class="w-full p-2 border rounded" type="text" />
     </div>
 
     <div>
-      <label for="category" class="block mb-1">Categoria:</label>
+      <label for="category" class="block mb-1">Categoria:<span>*</span></label>
       <select id="category" formControlName="category" class="w-full p-2 border rounded">
         <option value="">Selecione uma categoria</option>
         <option value="categoria1">Categoria 1</option>
@@ -28,7 +28,7 @@
       </select>
     </div>
     <div>
-      <label for="user" class="block mb-1">Usuário:</label>
+      <label for="user" class="block mb-1">Usuário: <span>*</span></label>
       <select id="user" formControlName="user" class="w-full p-2 border rounded">
         <option value="">Selecione um usuário</option>
         <option value="usuario1">Usuário 1</option>
@@ -37,7 +37,7 @@
       </select>
     </div>
     <div>
-      <label for="valor" class="block mb-1">Valor:</label>
+      <label for="valor" class="block mb-1">Valor:<span>*</span></label>
       <input id="valor" formControlName="valor" class="w-full p-2 border rounded" type="number" />
     </div>
     <div>

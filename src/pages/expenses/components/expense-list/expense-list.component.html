@@ -31,81 +31,90 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <!-- Produto Select -->
         <div>
-          <label for="product" class="block mb-1">Produto</label>
-          <select id="product" class="border rounded p-2 w-full">
-            <option value="">Selecione um produto</option>
-            <!-- Adicione as opções do produto aqui -->
-          </select>
+
+            <label for="product" class="block mb-1">Produto</label>
+            <input
+            type="text"
+            [(ngModel)]="selectedProduct"
+            placeholder="Pesquisar por produto, categoria ou usuário"
+            class="border rounded p-2 flex-grow w-full"
+          />
+     
         </div>
   
         <!-- Categoria Select -->
         <div>
           <label for="category" class="block mb-1">Categoria</label>
-          <select id="category" class="border rounded p-2 w-full">
+          <select id="category" [(ngModel)]="selectedCategory" class="border rounded p-2 w-full">
             <option value="">Selecione uma categoria</option>
-            <!-- Adicione as opções da categoria aqui -->
+            <option *ngFor="let category of CategoriesList" [value]="category">{{category}}</option>
           </select>
         </div>
   
         <!-- Usuario Select -->
         <div>
           <label for="user" class="block mb-1">Usuário</label>
-          <select id="user" class="border rounded p-2 w-full">
+          <select id="user" [(ngModel)]="selectedUser" class="border rounded p-2 w-full">
             <option value="">Selecione um usuário</option>
-            <!-- Adicione as opções do usuário aqui -->
+            <option *ngFor="let user of UsersList" [value]="user">{{user}}</option>
           </select>
         </div>
   
         <!-- Valor Mínimo -->
         <div>
           <label for="minValue" class="block mb-1">Valor Mínimo</label>
-          <input type="number" id="minValue" class="border rounded p-2 w-full" placeholder="Valor mínimo" />
+          <input type="number" id="minValue" [(ngModel)]="minValue" class="border rounded p-2 w-full" placeholder="Valor mínimo" />
         </div>
   
         <!-- Valor Máximo -->
         <div>
           <label for="maxValue" class="block mb-1">Valor Máximo</label>
-          <input type="number" id="maxValue" class="border rounded p-2 w-full" placeholder="Valor máximo" />
+          <input type="number" id="maxValue" [(ngModel)]="maxValue" class="border rounded p-2 w-full" placeholder="Valor máximo" />
         </div>
   
         <!-- Intervalo de Data -->
         <div>
           <label for="startDate" class="block mb-1">Data Inicial</label>
-          <input type="date" id="startDate" class="border rounded p-2 w-full" />
+          <input type="date" id="startDate" [(ngModel)]="startDate" class="border rounded p-2 w-full" />
         </div>
   
         <div>
           <label for="endDate" class="block mb-1">Data Final</label>
-          <input type="date" id="endDate" class="border rounded p-2 w-full" />
+          <input type="date" id="endDate" [(ngModel)]="endDate" class="border rounded p-2 w-full" />
         </div>
   
         <!-- Intervalo de Data de Pagamento -->
         <div>
           <label for="paymentStartDate" class="block mb-1">Data de Pagamento Inicial</label>
-          <input type="date" id="paymentStartDate" class="border rounded p-2 w-full" />
+          <input type="date" id="paymentStartDate" [(ngModel)]="paymentStartDate" class="border rounded p-2 w-full" />
         </div>
   
         <div>
           <label for="paymentEndDate" class="block mb-1">Data de Pagamento Final</label>
-          <input type="date" id="paymentEndDate" class="border rounded p-2 w-full" />
+          <input type="date" id="paymentEndDate" [(ngModel)]="paymentEndDate" class="border rounded p-2 w-full" />
         </div>
   
         <!-- Tipo de Pagamento Select -->
         <div>
           <label for="paymentType" class="block mb-1">Tipo de Pagamento</label>
-          <select id="paymentType" class="border rounded p-2 w-full">
+          <select id="paymentType" [(ngModel)]="selectedPaymentType" class="border rounded p-2 w-full">
             <option value="">Selecione um tipo de pagamento</option>
-            <!-- Adicione as opções do tipo de pagamento aqui -->
+            <option *ngFor="let paymentType of PaymentTypesList" [value]="paymentType">{{paymentType}}</option>
           </select>
         </div>
   
         <!-- Status Select -->
         <div>
           <label for="status" class="block mb-1">Status</label>
-          <select id="status" class="border rounded p-2 w-full">
+          <select id="status" [(ngModel)]="selectedStatus" class="border rounded p-2 w-full">
             <option value="">Selecione um status</option>
-            <!-- Adicione as opções do status aqui -->
+            <option *ngFor="let status of StatusesList" [value]="status">{{status}}</option>
           </select>
+        </div>
+  
+        <div>
+        <button (click)="search()" class="bg-blue-500 text-white rounded p-2 ml-2 mt-7">Aplicar Filtros</button>
+        <button (click)="clearFilters()" class="bg-blue-500 text-white rounded p-2 ml-2 mt-7">Limpar Filtros</button>
         </div>
       </div>
     </div>
@@ -129,11 +138,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let record of filteredList">
+        <tr *ngFor="let record of filteredList | paginate: { itemsPerPage: 4, currentPage: currentPage }">
           <td>{{ record.product }}</td>
           <td>{{ record.category }}</td>
           <td>{{ record.user }}</td>
-          <td>{{ record.valor }}</td>
+          <td>{{ record.value }}</td>
           <td>{{ record.purchaseDate }}</td>
           <td>{{ record.payDay }}</td>
           <td>{{ record.payMethod }}</td>
@@ -159,5 +168,14 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="flex justify-end mt-4">
+    <pagination-controls 
+    class="my-pagination" 
+    (pageChange)="currentPage = $event"
+    previousLabel=""
+    nextLabel=""
+    ></pagination-controls>
   </div>
 </div>

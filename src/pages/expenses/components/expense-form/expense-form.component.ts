@@ -32,7 +32,7 @@ export class ExpenseFormComponent implements OnInit {
       purchaseDate: [''],
       payDay: [''],
       payMethod: [''],
-      status: ['', Validators.required],
+      status: [''],
       installments: [''],
       actualInstallments: [''],
       isActive: [true],
