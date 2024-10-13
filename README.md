@@ -1,27 +1,79 @@
 # ERPDomestico
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Este é um projeto pessoal desenvolvido para atender à necessidade de um software que permita aos residentes de um estabelecimento gerenciar seus gastos de forma simples e prática. Através de dashboards, os usuários podem visualizar seus gastos em gráficos, proporcionando uma melhor compreensão de suas finanças pessoais.
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Gerenciamento de Gastos**: Adicione, edite e exclua despesas de forma intuitiva.
+- **Dashboards Interativos**: Visualize seus gastos em gráficos dinâmicos.
+- **Relatórios**: Geração de relatórios detalhados sobre despesas.
 
-## Code scaffolding
+## Tecnologias Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular**: Framework para construção da aplicação web.
+- **TypeScript**: Linguagem utilizada para o desenvolvimento da aplicação.
+- **JSON-Server**: Simulador de backend para facilitar o desenvolvimento e testes.
 
-## Build
+## Como Testar
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para testar o projeto, siga as instruções abaixo:
 
-## Running unit tests
+### 1. Clonando o Repositório
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+git clone https://github.com/VictorAsz/ERPDomestico.git
+cd ERPDomestico
+```
 
-## Running end-to-end tests
+### 2. Instalando Dependências
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Execute o seguinte comando para instalar as dependências do projeto:
 
-## Further help
+```
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 3. Servidor de Desenvolvimento
+
+Inicie o servidor de desenvolvimento Angular:
+
+```
+ng serve
+```
+
+Acesse a aplicação no navegador através do endereço `http://localhost:4200`.
+
+### 4. Servidor Backend com JSON-Server
+
+Em um novo terminal, inicie o servidor local para o backend usando JSON-Server:
+
+```
+npx json-server db.json
+```
+
+O JSON-Server estará disponível em `http://localhost:3000`.
+
+## Contribuição
+
+Sinta-se à vontade para contribuir com o projeto! Para isso, siga as etapas abaixo:
+
+1. Faça um fork deste repositório.
+2. Crie uma nova branch (`git checkout -b feature/MinhaNovaFuncionalidade`).
+3. Faça suas alterações e commit (`git commit -m 'Adicionando nova funcionalidade'`).
+4. Envie para o repositório remoto (`git push origin feature/MinhaNovaFuncionalidade`).
+5. Abra um pull request.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## Contato
+
+Se você tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato:
+
+- **Victor Assunção Schumann Oliveira**: victor.a.schumann@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/victoraszs/
+
+---
+
+Agradeço por visitar meu projeto!
