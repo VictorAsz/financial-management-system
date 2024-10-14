@@ -1,4 +1,4 @@
-# ERPDomestico
+# Gestão doméstica
 
 Este é um projeto pessoal desenvolvido para atender à necessidade de um software que permita aos residentes de um estabelecimento gerenciar seus gastos de forma simples e prática. Através de dashboards, os usuários podem visualizar seus gastos em gráficos, proporcionando uma melhor compreensão de suas finanças pessoais.
 
