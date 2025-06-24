@@ -27,7 +27,7 @@ import { ExpensesService } from '../pages/expenses/services/expenses.service';
   providers: [
     ExpensesService,
   ],
-  templateUrl: './app.component.html',
+  template: '<router-outlet></router-outlet>',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
