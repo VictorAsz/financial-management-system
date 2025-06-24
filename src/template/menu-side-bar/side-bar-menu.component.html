@@ -32,10 +32,14 @@
         </a>
       </li>
       <li>
-        <a routerLink="/logout" class="flex items-center p-2 rounded-md hover:bg-gray-700">
+         <button
+            (click)="logout()"
+            class="flex items-center w-full text-left p-2 rounded-md hover:bg-gray-700"
+          >
+          
           <i class="fas fa-sign-out-alt"></i>
           <span class="ml-2" [ngClass]="{'hidden': isCollapsed}">Logout</span>
-        </a>
+        </button>
       </li>
     </ul>
   </nav>

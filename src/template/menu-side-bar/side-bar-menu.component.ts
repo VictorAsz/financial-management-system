@@ -5,7 +5,10 @@ import {
   RouterLinkActive,
   RouterModule,
   RouterOutlet,
+  Router,
 } from '@angular/router';
+import { SupabaseService } from '../../services/supabase.service'; 
+
 
 @Component({
   selector: 'app-menu-side-bar',
@@ -22,11 +25,19 @@ import {
 })
 export class SideBarMenuComponent implements OnInit {
   isCollapsed = false;
-  constructor() {}
+  constructor(
+    private supabase: SupabaseService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  async logout() {
+    await this.supabase.client.auth.signOut();
+    this.router.navigate(['/login'])
   }
 }
