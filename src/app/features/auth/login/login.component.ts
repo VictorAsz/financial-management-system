@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { SupabaseService } from "../../services/supabase.service";
+import { SupabaseService } from "../../../core/services/supabase.service";
 import { Route, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";

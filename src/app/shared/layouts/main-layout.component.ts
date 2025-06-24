@@ -2,9 +2,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '../template/header/header.component';
-import { SideBarMenuComponent } from '../template/menu-side-bar/side-bar-menu.component';
-import { FooterComponent } from '../template/footer/footer.component';
+import { HeaderComponent } from '../components/header/header.component';
+import { SideBarMenuComponent } from '../components/menu-side-bar/side-bar-menu.component';
+import { FooterComponent } from '../components/footer/footer.component';
 
 @Component({
   selector: 'app-root',

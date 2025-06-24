@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { SideBarMenuComponent } from '../template/menu-side-bar/side-bar-menu.component';
-import { ExpenseListComponent } from '../pages/expenses/components/expense-list/expense-list.component';
-import { FooterComponent } from '../template/footer/footer.component';
-import { HeaderComponent } from '../template/header/header.component';
+import { SideBarMenuComponent } from './shared/components/menu-side-bar/side-bar-menu.component';
+import { ExpenseListComponent } from './features/expenses/components/expense-list/expense-list.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ExpensesService } from '../pages/expenses/services/expenses.service';
+import { ExpensesService } from './features/expenses/services/expenses.service';
 
 @Component({
   selector: 'app-root',
