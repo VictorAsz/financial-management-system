@@ -28,7 +28,6 @@ import { ExpensesService } from './features/expenses/services/expenses.service';
     ExpensesService,
   ],
   template: '<router-outlet></router-outlet>',
-  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'ERP-domestico';
