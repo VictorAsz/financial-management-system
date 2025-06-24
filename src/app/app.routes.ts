@@ -5,13 +5,30 @@ import { provideRouter, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ExpenseListComponent } from '../pages/expenses/components/expense-list/expense-list.component';
 import { ExpenseFormComponent } from '../pages/expenses/components/expense-form/expense-form.component';
+import { LoginScreenComponent } from '../pages/login/login.component';
+import { AuthGuard } from './auth.guard';
+import { MainLayoutComponent } from './main-layout.component';
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: MainPageComponent },
-  { path: 'expenses-list', component: ExpenseListComponent},
-  { path: 'expenses-add-form/:id', component: ExpenseFormComponent},
+  {
+      path: '',
+      component: MainLayoutComponent,
+      children: [
+        { path: '', redirectTo: 'home', pathMatch: 'full' },
+        { path: 'home', component: MainPageComponent ,  canActivate: [AuthGuard]},
+        { path: 'expenses-list', component: ExpenseListComponent,  canActivate: [AuthGuard] },
+        { path: 'expenses-add-form/:id', component: ExpenseFormComponent,  canActivate: [AuthGuard] },
+      ]
+  },
+  { path: 'login', component: LoginScreenComponent },
+
+
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginScreenComponent }, 
+  { path: 'home', component: MainPageComponent ,  canActivate: [AuthGuard]},
+  { path: 'expenses-list', component: ExpenseListComponent,  canActivate: [AuthGuard] },
+  { path: 'expenses-add-form/:id', component: ExpenseFormComponent,  canActivate: [AuthGuard] },
 ];
 
 bootstrapApplication(AppComponent, {

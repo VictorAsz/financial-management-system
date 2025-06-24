@@ -32,8 +32,6 @@ import { FooterComponent } from '../template/footer/footer.component';
             </div>
         </div>
     </div>
-
-  
   `,
 })
 export class MainLayoutComponent {
