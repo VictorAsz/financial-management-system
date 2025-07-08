@@ -17,16 +17,23 @@ export class TransactionService {
   }
 
   async getTransactions(): Promise<Transaction[]> {
-   const { data, error } = await this.supabase
-     .from('transactions')
-     .select('*')
-     .order('transaction_date', { ascending: false });
-
+    const { data, error } = await this.supabase
+      .from('transactions')
+      .select(
+        `
+       *,
+       account:accounts!transactions_account_id_fkey (id, name, type),
+       destination:accounts!transactions_destination_account_id_fkey (id, name, type),
+       category:categories (id, name, color)
+     `
+      )
+      .order('transaction_date', { ascending: false });
 
     if (error) {
-      console.error('Error fetching transactions:', error);
+      console.error('Erro ao buscar transações:', error);
       return [];
     }
+
     return data || [];
   }
 }
