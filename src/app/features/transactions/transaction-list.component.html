@@ -1,0 +1,78 @@
+<div class="p-4 max-w-5xl mx-auto">
+ <h2 class="text-2xl font-bold mb-4 text-gray-800">Transações</h2>
+
+ <div *ngIf="loading" class="text-center text-gray-500">Carregando...</div>
+
+ <div *ngIf="!loading && transactions.length === 0" class="text-center text-gray-400">
+   Nenhuma transação encontrada.
+ </div>
+
+ <table *ngIf="transactions.length > 0" class="w-full bg-white border border-gray-200 rounded shadow-sm">
+   <thead>
+     <tr class="bg-gray-100 text-sm text-gray-700">
+       <th class="text-left px-4 py-2">Título</th>
+       <th class="text-left px-4 py-2">Valor</th>
+       <th class="text-left px-4 py-2">Tipo</th>
+       <th class="text-left px-4 py-2">Categoria</th>
+       <th class="text-left px-4 py-2">Conta</th>
+       <th class="text-left px-4 py-2">Data</th>
+       <th class="text-left px-4 py-2">Parcelado?</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let transaction of transactions" class="border-transaction hover:bg-gray-50 text-sm">
+       <td class="px-4 py-2 font-medium">{{ transaction.title }}</td>
+
+       <td class="px-4 py-2">
+         <span
+           [ngClass]="{
+             'text-green-600': transaction.type === 'income',
+             'text-red-600': transaction.type === 'expense',
+             'text-blue-600': transaction.type === 'transfer'
+           }">
+           {{ transaction.type === 'income' ? '+' : transaction.type === 'expense' ? '-' : '' }}
+           {{ transaction.total_amount | currency: 'BRL' }}
+         </span>
+       </td>
+
+       <td class="px-4 py-2 capitalize">
+         <span
+           [ngClass]="{
+             'bg-green-100 text-green-700': transaction.type === 'income',
+             'bg-red-100 text-red-700': transaction.type === 'expense',
+             'bg-blue-100 text-blue-700': transaction.type === 'transfer'
+           }"
+           class="px-2 py-0.5 rounded text-xs font-semibold">
+           {{ transaction.type }}
+         </span>
+       </td>
+
+       <td class="px-4 py-2">
+         <span
+           class="inline-block text-xs px-2 py-1 rounded"
+           [ngStyle]="{ backgroundColor: transaction.category?.color || '#ddd', color: '#fff' }">
+           {{ transaction.category?.name || 'Sem categoria' }}
+         </span>
+       </td>
+
+       <td class="px-4 py-2 text-sm">
+         {{ transaction.account?.name || 'N/A' }}
+         <span class="text-xs text-gray-500 ml-1">({{ transaction.account?.type }})</span>
+       </td>
+
+       <td class="px-4 py-2 text-sm">{{ transaction.transaction_date | date: 'dd/MM/yyyy' }}</td>
+
+       <td class="px-4 py-2 text-sm">
+         <ng-container *ngIf="transaction.is_installment; else notParcel">
+           <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded text-xs font-semibold">
+             {{ transaction.installment_count }}x
+           </span>
+         </ng-container>
+         <ng-template #notParcel>
+           <span class="text-gray-400 text-xs">—</span>
+         </ng-template>
+       </td>
+     </tr>
+   </tbody>
+ </table>
+</div>

@@ -7,6 +7,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExpensesService } from './features/expenses/services/expenses.service';
+import { TransactionListComponent } from './features/transactions/transaction-list.component';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { ExpensesService } from './features/expenses/services/expenses.service';
     ,FooterComponent
     ,HeaderComponent
     ,ExpenseListComponent
+    ,TransactionListComponent
 
   ],
   providers: [
