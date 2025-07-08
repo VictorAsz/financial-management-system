@@ -8,6 +8,7 @@ import { ExpenseFormComponent } from './features/expenses/components/expense-for
 import { LoginScreenComponent } from './features/auth/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { MainLayoutComponent } from './shared/layouts/main-layout.component';
+import { TransactionListComponent } from './features/transactions/transaction-list.component';
 
 
 export const routes: Routes = [
@@ -19,16 +20,12 @@ export const routes: Routes = [
         { path: 'home', component: MainPageComponent ,  canActivate: [AuthGuard]},
         { path: 'expenses-list', component: ExpenseListComponent,  canActivate: [AuthGuard] },
         { path: 'expenses-add-form/:id', component: ExpenseFormComponent,  canActivate: [AuthGuard] },
+        { path: 'transactions', component: TransactionListComponent,  canActivate: [AuthGuard] },
       ]
   },
+
   { path: 'login', component: LoginScreenComponent },
-
-
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginScreenComponent }, 
-  { path: 'home', component: MainPageComponent ,  canActivate: [AuthGuard]},
-  { path: 'expenses-list', component: ExpenseListComponent,  canActivate: [AuthGuard] },
-  { path: 'expenses-add-form/:id', component: ExpenseFormComponent,  canActivate: [AuthGuard] },
 ];
 
 bootstrapApplication(AppComponent, {

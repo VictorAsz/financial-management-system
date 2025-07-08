@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-main-page',
-  imports: [RouterModule],
+  imports: [
+       RouterOutlet,
+      RouterLink,
+      RouterLinkActive,
+    RouterModule,
+  ]
+  ,
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
