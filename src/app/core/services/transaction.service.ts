@@ -8,14 +8,13 @@ import { SupabaseService } from './supabase.service';
   providedIn: 'root',
 })
 export class TransactionService {
-  private supabase: SupabaseClient;
 
-  constructor() {
-    this.supabase = new SupabaseService().client;
+  constructor(private supabase: SupabaseService) {
+
   }
 
   async getTransactions(): Promise<Transaction[]> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.supabase.client
       .from('transactions')
       .select(
         `
