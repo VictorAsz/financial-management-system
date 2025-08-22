@@ -1,4 +1,3 @@
-
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -19,20 +18,16 @@ import { FooterComponent } from '../components/footer/footer.component';
   providers: [],
   template: `
     <div class="flex min-h-screen flex-col">
-        <app-header></app-header>
-        <div class="flex flex-grow">
-            <app-menu-side-bar></app-menu-side-bar>
-            <div class="flex flex-col flex-grow">
-            <main class="flex-grow">
-                <router-outlet></router-outlet>
-            </main>
-            <footer class="w-full bg-gray-800 text-white flex justify-center items-center p-4">
-                <p>Made By Victor A.S</p>
-            </footer>
-            </div>
+      <app-header></app-header>
+      <div class="flex flex-grow">
+        <div class="flex flex-col flex-grow">
+          <main class="flex-grow">
+            <router-outlet></router-outlet>
+          </main>
+          <app-footer />
         </div>
+      </div>
     </div>
   `,
 })
-export class MainLayoutComponent {
-}
+export class MainLayoutComponent {}

@@ -1,10 +1,58 @@
-<header class="bg-gray-800 text-white p-4 flex justify-between items-center border-b-4 border-slate-600">
-  <div class="flex items-center">
-    <h1 class="text-2xl font-bold">Logo</h1>
-    <nav class="ml-4">
-      <ul class="flex space-x-4">
+<header class="w-full bg-surface text-on-surface shadow-md">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+    <!-- Logo -->
+    <div class="flex items-center space-x-3">
+      <span class="material-symbols-outlined text-primary">savings</span>
+      <h1 class="text-xl font-semibold">Gestão de Gastos</h1>
+    </div>
 
+    <!-- Top Navigation -->
+    <nav>
+      <ul class="flex space-x-6 text-sm font-medium">
+        <li>
+          <a routerLink="/home" class="flex items-center gap-1 hover:text-primary transition">
+            <span class="material-symbols-outlined text-lg">home</span> Home
+          </a>
+        </li>
+        <li>
+          <a routerLink="/expenses-list" class="flex items-center gap-1 hover:text-primary transition">
+            <span class="material-symbols-outlined text-lg">dashboard</span> Dashboard
+          </a>
+        </li>
+        <li>
+          <a routerLink="/transactions" class="flex items-center gap-1 hover:text-primary transition">
+            <span class="material-symbols-outlined text-lg">receipt_long</span> Transações
+          </a>
+        </li>
+        <li>
+          <a routerLink="/profile" class="flex items-center gap-1 hover:text-primary transition">
+            <span class="material-symbols-outlined text-lg">person</span> Perfil
+          </a>
+        </li>
+        <li>
+          <a routerLink="/settings" class="flex items-center gap-1 hover:text-primary transition">
+            <span class="material-symbols-outlined text-lg">settings</span> Configurações
+          </a>
+        </li>
       </ul>
     </nav>
+
+    <!-- Ações do Usuário -->
+    <div class="flex items-center space-x-3">
+<button (click)="toggleTheme()"
+        class="p-2 rounded-full hover:bg-surface transition">
+  <span class="material-symbols-outlined">
+    {{ isDarkTheme ? 'dark_mode' : 'light_mode'}}
+  </span>
+</button>
+
+    </div>
+
+    <!-- Logout -->
+    <div class="flex items-center space-x-3">
+      <button (click)="logout()" class="flex items-center gap-1 px-3 py-2 rounded-lg text-sm hover:bg-secondary-container hover:text-on-secondary-container transition">
+        <span class="material-symbols-outlined">logout</span> Logout
+      </button>
+    </div>
   </div>
 </header>
