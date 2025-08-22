@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { SupabaseService } from '../../../core/services/supabase.service';
 import { ThemeService } from '../../../core/services/theme.service';
 
@@ -8,6 +8,10 @@ import { ThemeService } from '../../../core/services/theme.service';
   standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
+  imports: [
+    RouterLink,
+    RouterModule,
+  ],
 })
 export class HeaderComponent implements OnInit {
   isDarkTheme: boolean = false;
@@ -16,7 +20,7 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     public themeService: ThemeService
   ) {
-      this.isDarkTheme = themeService.isDark();
+    this.isDarkTheme = themeService.isDark();
   }
 
   ngOnInit() {}
