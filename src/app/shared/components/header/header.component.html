@@ -1,4 +1,4 @@
-<header class="w-full bg-surface text-on-surface shadow-md">
+<header class="w-full bg-surface text-on-surface shadow-md hidden md:block">
   <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
     <!-- Logo -->
     <div class="flex items-center space-x-3">
@@ -56,3 +56,33 @@
     </div>
   </div>
 </header>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface shadow-[0_-1px_4px_rgba(0,0,0,0.08)] md:hidden">
+  <ul class="flex justify-around py-2">
+  
+    <li>
+      <a routerLink="/expenses-list" 
+         routerLinkActive="text-primary"
+         class="flex flex-col items-center text-on-surface transition-colors duration-200">
+        <span class="material-symbols-outlined text-2xl">dashboard</span>
+      </a>
+    </li>
+      <li>
+      <a routerLink="/home" 
+         routerLinkActive="text-primary"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="flex flex-col items-center text-on-surface transition-colors duration-200">
+        <span class="material-symbols-outlined text-2xl">home</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/settings" 
+         routerLinkActive="text-primary"
+         class="flex flex-col items-center text-on-surface transition-colors duration-200">
+        <span class="material-symbols-outlined text-2xl">settings</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
