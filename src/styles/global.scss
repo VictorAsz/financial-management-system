@@ -1,4 +1,6 @@
 
+@use '@angular/material' as mat;
+
 :root {
   --md-sys-color-primary: #6750A4;
   --md-sys-color-on-primary: #FFFFFF;
@@ -10,21 +12,55 @@
   --md-sys-color-on-surface: #1C1B1F;
   --md-sys-color-on-surface-variant: #49454F;
   --md-sys-color-outline: #79747E;
+
+  .bg-surface { background-color: var(--md-sys-color-surface); }
+  .text-on-surface { color: var(--md-sys-color-on-surface); }
+  .bg-surface-variant { background-color: var(--md-sys-color-surface-variant); }
+  .text-on-surface-variant { color: var(--md-sys-color-on-surface-variant); }
+  .text-primary { color: var(--md-sys-color-primary); }
+  .bg-secondary-container { background-color: var(--md-sys-color-secondary-container); }
+  .text-on-secondary-container { color: var(--md-sys-color-on-secondary-container); }
+  .border-outline { border-color: var(--md-sys-color-outline); }
 }
 :root.dark {
-  --md-sys-color-primary: #D0BCFF;
-  --md-sys-color-on-primary: #381E72;
-  --md-sys-color-secondary: #CCC2DC;
-  --md-sys-color-secondary-container: #4A4458;
-  --md-sys-color-on-secondary-container: #E8DEF8;
-  --md-sys-color-surface: #1C1B1F;
-  --md-sys-color-surface-variant: #49454F;
-  --md-sys-color-on-surface: #E6E1E5;
-  --md-sys-color-on-surface-variant: #CAC4D0;
-  --md-sys-color-outline: #938F99;
+  background-color: #121212; /* fundo dark real */
+  
+  /* Cores principais (Material 3 dark adaptado) */
+  --md-sys-color-primary: #BB86FC;
+  --md-sys-color-on-primary: #1C1B1F;
+  
+  --md-sys-color-secondary: #03DAC6;
+  --md-sys-color-secondary-container: #5e0daa;
+  --md-sys-color-on-secondary-container: #A7FFEB;
+
+  /* Superfícies */
+  --md-sys-color-surface: #1E1E1E;
+  --md-sys-color-surface-variant: #2C2C2C;
+  --md-sys-color-on-surface: #E6E6E6;
+  --md-sys-color-on-surface-variant: #B3B3B3;
+
+  /* Outline e bordas */
+  --md-sys-color-outline: #3E3E3E;
+
+  /* Extras opcionais para glow-up */
+  --md-sys-color-success: #4CAF50;
+  --md-sys-color-error: #CF6679;
+  --md-sys-color-warning: #FFD54F;
+
+  .bg-surface { background-color: var(--md-sys-color-surface); }
+  .bg-surface-50 { background-color: color-mix(in srgb, var(--md-sys-color-surface) 95%, white); }
+  .bg-surface-100 { background-color: color-mix(in srgb, var(--md-sys-color-surface) 90%, white); }
+
+  .text-surface-50 { color: color-mix(in srgb, var(--md-sys-color-on-surface) 95%, black); }
+  .text-surface-200 { color: color-mix(in srgb, var(--md-sys-color-on-surface) 80%, black); }
+  .text-surface-400 { color: color-mix(in srgb, var(--md-sys-color-on-surface) 60%, black); }
+  .text-surface-700 { color: color-mix(in srgb, var(--md-sys-color-on-surface) 100%, black); }
+  .text-surface-900 { color: var(--md-sys-color-on-surface); }
+
+  .border-surface-200 { border-color: color-mix(in srgb, var(--md-sys-color-outline) 40%, transparent); }
+  .border-surface-700 { border-color: color-mix(in srgb, var(--md-sys-color-outline) 80%, black); }
+
 }
-
-
 @media (prefers-color-scheme: dark) {
   :root:not(.dark):not(.light) {
     /* só aplica se o usuário não forçou manualmente */
@@ -39,13 +75,29 @@
     --md-sys-color-on-surface-variant: #CAC4D0;
     --md-sys-color-outline: #938F99;
   }
+  
 }
 
-.bg-surface { background-color: var(--md-sys-color-surface); }
-.text-on-surface { color: var(--md-sys-color-on-surface); }
-.bg-surface-variant { background-color: var(--md-sys-color-surface-variant); }
-.text-on-surface-variant { color: var(--md-sys-color-on-surface-variant); }
-.text-primary { color: var(--md-sys-color-primary); }
-.bg-secondary-container { background-color: var(--md-sys-color-secondary-container); }
-.text-on-secondary-container { color: var(--md-sys-color-on-secondary-container); }
-.border-outline { border-color: var(--md-sys-color-outline); }
+/* LIGHT MODE (padrão) */
+:root {
+  --md-sys-color-primary: #6750A4;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-secondary: #625B71;
+  --md-sys-color-secondary-container: #E8DEF8;
+  --md-sys-color-on-secondary-container: #1D192B;
+  --md-sys-color-surface: #FFFBFE;
+  --md-sys-color-on-surface: #1C1B1F;
+  --md-sys-color-outline: #79747E;
+}
+
+/* DARK MODE */
+.dark-theme {
+  --md-sys-color-primary: #BB86FC;
+  --md-sys-color-on-primary: #1C1B1F;
+  --md-sys-color-secondary: #03DAC6;
+  --md-sys-color-secondary-container: #5e0daa;
+  --md-sys-color-on-secondary-container: #A7FFEB;
+  --md-sys-color-surface: #1E1E1E;
+  --md-sys-color-on-surface: #E6E6E6;
+  --md-sys-color-outline: #3E3E3E;
+}
