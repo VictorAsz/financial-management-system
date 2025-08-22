@@ -1,78 +1,131 @@
-<div class="p-4 max-w-5xl mx-auto">
- <h2 class="text-2xl font-bold mb-4 text-gray-800">Transações</h2>
+<div class="p-6 max-w-7xl mx-auto">
 
- <div *ngIf="loading" class="text-center text-gray-500">Carregando...</div>
+  <!-- Header com título e botão Novo -->
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-3xl font-semibold text-surface-900 dark:text-surface-50 tracking-tight">
+      Transações
+    </h2>
+    <button
+      (click)="createTransaction()"
+      mat-flat-button
+      color="primary"
+      class="flex items-center gap-1 px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition">
+      <span class="material-symbols-outlined text-xl">add</span>
+      <span class="hidden sm:inline">Novo</span>
+    </button>
+  </div>
 
- <div *ngIf="!loading && transactions.length === 0" class="text-center text-gray-400">
-   Nenhuma transação encontrada.
- </div>
+  <!-- Loading e vazio -->
+  <div *ngIf="loading" class="text-center text-surface-500 dark:text-surface-400 py-10 text-lg">
+    Carregando...
+  </div>
 
- <table *ngIf="transactions.length > 0" class="w-full bg-white border border-gray-200 rounded shadow-sm">
-   <thead>
-     <tr class="bg-gray-100 text-sm text-gray-700">
-       <th class="text-left px-4 py-2">Título</th>
-       <th class="text-left px-4 py-2">Valor</th>
-       <th class="text-left px-4 py-2">Tipo</th>
-       <th class="text-left px-4 py-2">Categoria</th>
-       <th class="text-left px-4 py-2">Conta</th>
-       <th class="text-left px-4 py-2">Data</th>
-       <th class="text-left px-4 py-2">Parcelado?</th>
-     </tr>
-   </thead>
-   <tbody>
-     <tr *ngFor="let transaction of transactions" class="border-transaction hover:bg-gray-50 text-sm">
-       <td class="px-4 py-2 font-medium">{{ transaction.title }}</td>
+  <div *ngIf="!loading && transactions.length === 0" class="text-center text-surface-400 dark:text-surface-500 py-10 text-lg">
+    Nenhuma transação encontrada.
+  </div>
 
-       <td class="px-4 py-2">
-         <span
-           [ngClass]="{
-             'text-green-600': transaction.type === 'income',
-             'text-red-600': transaction.type === 'expense',
-             'text-blue-600': transaction.type === 'transfer'
-           }">
-           {{ transaction.type === 'income' ? '+' : transaction.type === 'expense' ? '-' : '' }}
-           {{ transaction.total_amount | currency: 'BRL' }}
-         </span>
-       </td>
+  <!-- Tabela Angular Material -->
+  <div *ngIf="transactions.length > 0" class="overflow-hidden rounded-2xl shadow-md">
+    <table mat-table [dataSource]="transactions" class="mat-elevation-z1 w-full">
 
-       <td class="px-4 py-2 capitalize">
-         <span
-           [ngClass]="{
-             'bg-green-100 text-green-700': transaction.type === 'income',
-             'bg-red-100 text-red-700': transaction.type === 'expense',
-             'bg-blue-100 text-blue-700': transaction.type === 'transfer'
-           }"
-           class="px-2 py-0.5 rounded text-xs font-semibold">
-           {{ transaction.type }}
-         </span>
-       </td>
+      <!-- Título -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Título</th>
+        <td mat-cell *matCellDef="let transaction">{{ transaction.title }}</td>
+      </ng-container>
 
-       <td class="px-4 py-2">
-         <span
-           class="inline-block text-xs px-2 py-1 rounded"
-           [ngStyle]="{ backgroundColor: transaction.category?.color || '#ddd', color: '#fff' }">
-           {{ transaction.category?.name || 'Sem categoria' }}
-         </span>
-       </td>
+      <!-- Valor -->
+      <ng-container matColumnDef="total_amount">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Valor</th>
+        <td mat-cell *matCellDef="let transaction" class="text-center">
+          <span [ngClass]="{
+            'text-green-600 dark:text-green-400': transaction.type === 'income',
+            'text-red-600 dark:text-red-400': transaction.type === 'expense',
+            'text-blue-600 dark:text-blue-400': transaction.type === 'transfer'
+          }">
+            {{ transaction.type === 'income' ? '+' : transaction.type === 'expense' ? '-' : '' }}
+            {{ transaction.total_amount | currency:'BRL' }}
+          </span>
+        </td>
+      </ng-container>
 
-       <td class="px-4 py-2 text-sm">
-         {{ transaction.account?.name || 'N/A' }}
-         <span class="text-xs text-gray-500 ml-1">({{ transaction.account?.type }})</span>
-       </td>
+      <!-- Tipo -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Tipo</th>
+        <td mat-cell *matCellDef="let transaction" class="text-center">
+          <span [ngClass]="{
+            'bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100': transaction.type === 'income',
+            'bg-red-100 text-red-700 dark:bg-red-700 dark:text-red-100': transaction.type === 'expense',
+            'bg-blue-100 text-blue-700 dark:bg-blue-700 dark:text-blue-100': transaction.type === 'transfer'
+          }" class="px-3 py-1 rounded-full text-xs font-semibold">
+            {{ transaction.type }}
+          </span>
+        </td>
+      </ng-container>
 
-       <td class="px-4 py-2 text-sm">{{ transaction.transaction_date | date: 'dd/MM/yyyy' }}</td>
+      <!-- Categoria -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Categoria</th>
+        <td mat-cell *matCellDef="let transaction" class="text-center">
+          <span class="inline-block text-xs px-3 py-1 rounded-full text-white shadow-sm"
+                [ngStyle]="{ backgroundColor: transaction.category?.color }">
+            {{ transaction.category?.name || 'Sem categoria' }}
+          </span>
+        </td>
+      </ng-container>
 
-       <td class="px-4 py-2 text-sm">
-         <ng-container *ngIf="transaction.is_installment; else notParcel">
-           <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded text-xs font-semibold">
-             {{ transaction.installment_count }}x
-           </span>
-         </ng-container>
-         <ng-template #notParcel>
-           <span class="text-gray-400 text-xs">—</span>
-         </ng-template>
-       </td>
-     </tr>
-   </tbody>
- </table>
+      <!-- Conta -->
+      <ng-container matColumnDef="account">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Conta</th>
+        <td mat-cell *matCellDef="let transaction" class="text-center">
+          {{ transaction.account?.name || 'N/A' }}
+          <span class="text-xs text-surface-500 dark:text-surface-400 ml-1">
+            ({{ transaction.account?.type }})
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Data -->
+      <ng-container matColumnDef="transaction_date">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Data</th>
+        <td mat-cell *matCellDef="let transaction" class="text-center">
+          {{ transaction.transaction_date | date: 'dd/MM/yyyy' }}
+        </td>
+      </ng-container>
+
+      <!-- Parcelado -->
+      <ng-container matColumnDef="installment">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Parcelado?</th>
+        <td mat-cell *matCellDef="let transaction" class="text-center">
+          <ng-container *ngIf="transaction.is_installment; else notParcel">
+            <span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-100 px-3 py-1 rounded-full text-xs font-semibold">
+              {{ transaction.installment_count }}x
+            </span>
+          </ng-container>
+          <ng-template #notParcel>
+            <span class="text-surface-400 dark:text-surface-500 text-xs">—</span>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Ações -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Ações</th>
+        <td mat-cell *matCellDef="let transaction" class="text-center"> 
+          <div class="flex gap-1 justify-center">
+            <button mat-icon-button color="primary" (click)="editTransaction(transaction); $event.stopPropagation()">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteTransaction(transaction); $event.stopPropagation()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="viewTransaction(row)"></tr>
+
+    </table>
+  </div>
 </div>

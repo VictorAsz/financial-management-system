@@ -1,0 +1,16 @@
+/* Centraliza todas as colunas, menos a primeira */
+.mat-column-total_amount,
+.mat-column-type,
+.mat-column-category,
+.mat-column-account,
+.mat-column-transaction_date,
+.mat-column-installment,
+.mat-column-actions {
+  text-align: center;
+}
+
+/* Primeira coluna Título alinhada à esquerda */
+.mat-column-title {
+  text-align: left;
+}
+  
